@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 5s  # Interval pengambilan data default
+
+scrape_configs:
+  # 1. Scrape Prometheus itu sendiri
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # 2. Scrape Loki (untuk cek status Loki)
+  - job_name: 'loki'
+    static_configs:
+      - targets: ['loki:3100']
+  - job_name: 'python-app'
+    static_configs:
+      - targets: ['python-app:5000']
+ 
